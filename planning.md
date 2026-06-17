@@ -99,6 +99,7 @@ For each tool, describe the specific failure mode you're handling and what the a
 
 ## Architecture
 
+```
 User query
     |
     v
@@ -122,6 +123,8 @@ Planning Loop
                     |
                     v
               return session
+
+```
 ---
 
 ## AI Tool Plan
