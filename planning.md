@@ -100,28 +100,28 @@ For each tool, describe the specific failure mode you're handling and what the a
 ## Architecture
 
 User query
-    │
-    ▼
+    |
+    v
 Planning Loop
-    │
-    ├─► search_listings(description, size, max_price)
-    │       │ results == []
-    │       ├──► session["error"] = "No listings found..." → return session
-    │       │
-    │       │ results != []
-    │       ▼
-    │   session["selected_item"] = results[0]
-    │       │
-    ├─► suggest_outfit(selected_item, wardrobe)
-    │       │
-    │   session["outfit_suggestion"] = "..."
-    │       │
-    └─► create_fit_card(outfit_suggestion, selected_item)
-            │
-        session["fit_card"] = "..."
-            │
-            ▼
-        return session
+    |
+    +--> search_listings(description, size, max_price)
+            |
+            +-- results == [] --> session["error"] = "No listings found..." --> return session
+            |
+            +-- results != []
+                    |
+                session["selected_item"] = results[0]
+                    |
+                suggest_outfit(selected_item, wardrobe)
+                    |
+                session["outfit_suggestion"] = "..."
+                    |
+                create_fit_card(outfit_suggestion, selected_item)
+                    |
+                session["fit_card"] = "..."
+                    |
+                    v
+              return session
 ---
 
 ## AI Tool Plan
