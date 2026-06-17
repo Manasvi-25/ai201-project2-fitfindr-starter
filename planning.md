@@ -154,7 +154,7 @@ I'll use Claude. I'll give it the Architecture diagram and the Planning Loop + S
 
 Write out what a full user interaction looks like from start to finish — tool call by tool call. Use a specific example query.
 
-**Example user query:** "I'm looking for a vintage graphic tee under $30. I mostly wear baggy jeans and chunky sneakers. What's out there and how would I style it?"
+**Example user query:** "I'm looking for a knit cardigan. What's out there and how would I style it?"
 
 **Step 1:**
 search_listings("knit cardigan", size=None, max_price=None) runs. Keywords "knit" and "cardigan" get matched against title, description, category, and style_tags across all 40 listings. Top result is the Knit Cardigan-Chunky Brown, $35, depop, size One Size / Oversized, condition excellent. Agent saves this to session["selected_item"].
@@ -163,7 +163,7 @@ search_listings("knit cardigan", size=None, max_price=None) runs. Keywords "knit
 suggest_outfit runs with session["selected_item"] as new_item and the example wardrobe as wardrobe. The wardrobe has baggy dark-wash jeans, a white ribbed tank, chunky white sneakers, and black combat boots among its 10 items. LLM returns something like "Layer this chunky brown cardigan open over your white ribbed tank and baggy jeans with chunky sneakers for an easy cozy look, or belt it at the waist over straight leg trousers and combat boots for something more put together." Agent saves this to session["outfit_suggestion"].
 
 **Step 3:**
-create_fit_card runs with session["outfit_suggestion"] and session["selected_item"]. LLM generates something like "grabbed this chunky brown cardigan off depop for $35 and it goes with literally everything i own tank + baggy jeans and done." Agent saves this to session["fit_card"].
+create_fit_card runs with session["outfit_suggestion"] and session["selected_item"]. LLM generates something like "grabbed this chunky brown cardigan off depop for $35 and it goes with literally everything i own 🤎 tank + baggy jeans and done." Agent saves this to session["fit_card"].
 
 **Final output to user:**
-All three panels populate the listing details for the chunky brown cardigan, the outfit suggestion, and the fit card caption ready to copy.
+All three panels populate — the listing details for the chunky brown cardigan, the outfit suggestion, and the fit card caption ready to copy.
